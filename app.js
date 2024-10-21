@@ -10,8 +10,8 @@ const auth = (req,res,next)=>{
 
 }
 app.get("/",auth,(req,res)=>{
-    num1 = req.params.num1;
-    num2 = req.params.num2;
+    num1 = req.query.num1;
+    num2 = req.query.num2;
     if(isNaN(num1) || isNaN(num2)){
         res.status(404).send("Not a Number")
     }
