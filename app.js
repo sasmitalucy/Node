@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 app.use(express.urlencoded({extended:true}));
-const auth = (req,res)=>{
+const auth = (req,res,next)=>{
     const authorizationHeader = req.headers.authorization;
     if(!authorizationHeader && authorizationHeader !== 'Bearer secret-key'){
         res.status(401).send("Invalid Authentication Key");
