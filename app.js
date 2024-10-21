@@ -6,6 +6,7 @@ const auth = (req,res)=>{
     if(!authkey && authorizationHeader !== 'Bearer secret-key'){
         res.status(401).send("Invalid Authentication Key");
     }
+    next();
 
 }
 app.get("/",auth,(req,res)=>{
