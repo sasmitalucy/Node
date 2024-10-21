@@ -1,0 +1,21 @@
+const express = require("express");
+const app = express();
+app.use(express.urlencoded({extended:true}));
+const auth = (req,res)=>{
+    const authorizationHeader = req.headers.authorization;
+    if(!authkey && authorizationHeader !== 'Bearer secret-key'){
+        res.status(401).send("Invalid Authentication Key");
+    }
+
+}
+app.get("/",auth,(req,res)=>{
+    num1 = req.params.num1;
+    num2 = req.params.num2;
+    if(isNaN(num1) || isNaN(num2)){
+        res.status(404).send("Not a Number")
+    }
+    var sum = num1+num2;
+    res.send(sum);
+})
+
+app.listen(3000);
